@@ -4,14 +4,24 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    private ListView listView;
+    private static String[] strings = new String[] {"first","second","third","four"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+         listView = (ListView) findViewById(R.id.lv_test);
+        listView.setAdapter(new ArrayAdapter<String >(this,android.R.layout.simple_list_item_single_choice,strings));
+        listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
     }
 
     @Override
@@ -20,6 +30,8 @@ public class MainActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
